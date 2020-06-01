@@ -1,0 +1,54 @@
+                一、需求:删除某文件夹下10天前的日志文件？（类型为.log）
+
+
+		1、具体步骤：
+
+
+		①查询是否存在需求中的日志问价
+
+
+		find /home/rab/hhy/test/ -mtime +10 -name "*.log" -exec ls -l {} \;
+
+
+		②存在执行删除(删除需谨慎，做好备份)
+
+
+		find /home/rab/hhy/test/ -mtime +10 -name "*.log" -exec rm -rf {} \;
+
+
+
+		详解：
+
+
+		/home/rab/hhy/test/ ：准备目录
+
+		-mtime：按天查找
+
+		-mmin：按分钟；
+
+		＋9：查找10天前的文件，当前时间为0
+
+		"*.*"：希望查找的数据类型，*.*为任意文件
+
+		-exec：固定写法
+
+		rm -rf：强制删除文件，包括目录
+
+		{} \; ：固定写法，一对大括号+空格+/+;
+
+
+
+
+		二、需求：查找大于5M的日志文件？
+
+
+		find /home/rab/hhy/test/ -type f -size +5M
+
+		或
+
+		find /home/rab/hhy/test/ -type f -size +5120k
+
+
+		删除:
+
+		find /home/rab/hhy/test/ -type f -size +5120k -exec rm -rf {} \;
